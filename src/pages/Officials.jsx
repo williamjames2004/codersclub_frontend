@@ -1,23 +1,47 @@
-import { useEffect, useRef } from "react";
-import profImg from "../assets/1.jpg";
-import nandhaImg from "../assets/2.jpeg";
-import jeevaImg from "../assets/3.jpg";
+import { useEffect, useRef, useState } from "react";
+import axios from "axios";
 
 const Officials = () => {
   const cardsRef = useRef([]);
+  const [officials, setOfficials] = useState([]);
 
+  // 🔥 Fetch API
   useEffect(() => {
+    const fetchOfficials = async () => {
+      try {
+        const res = await axios.get(
+          "https://codersclub-i9xo.onrender.com/clubofficials/officials"
+        );
+        setOfficials(res.data.data);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
+    fetchOfficials();
+  }, []);
+
+  // 🔥 Reset refs before render
+  cardsRef.current = [];
+
+  // 🔥 Animation Observer (runs AFTER data loads)
+  useEffect(() => {
+    if (!officials.length) return;
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.remove("opacity-0");
-            entry.target.classList.remove("translate-y-16");
-            entry.target.classList.remove("scale-95");
-
-            entry.target.classList.add("opacity-100");
-            entry.target.classList.add("translate-y-0");
-            entry.target.classList.add("scale-100");
+            entry.target.classList.remove(
+              "opacity-0",
+              "translate-y-16",
+              "scale-95"
+            );
+            entry.target.classList.add(
+              "opacity-100",
+              "translate-y-0",
+              "scale-100"
+            );
           }
         });
       },
@@ -29,35 +53,7 @@ const Officials = () => {
     });
 
     return () => observer.disconnect();
-  }, []);
-
-  const officials = [
-    {
-      name: "Prof. Jesudoss",
-      image: profImg,
-      profession: "Professor",
-      department: "Department of Artificial Intelligence",
-      role: "Founder, In-charge, Full Administrator Control",
-    },
-    {
-      name: "Mr. Nandhakumaaran",
-      image: nandhaImg,
-      profession: "Student",
-      pursuing: "I M.Sc Artificial Intelligence",
-      department: "Department of Artificial Intelligence",
-      role:
-        "President, responsible for chief guest invitations, arrangements, front-line coordination, and complete non-technical management of events",
-    },
-    {
-      name: "Mr. Jeeva Loganathan",
-      image: jeevaImg,
-      profession: "Student",
-      pursuing: "I M.Sc Artificial Intelligence",
-      department: "Department of Artificial Intelligence",
-      role:
-        "Vice President, backbone of technical works, question preparation, evaluations, and technical execution",
-    },
-  ];
+  }, [officials]); // ✅ important
 
   return (
     <div className="min-h-screen w-full px-6 md:px-20 pt-32 pb-20 bg-[radial-gradient(circle_at_top,_#0b1d3a,_#020617)] text-gray-200">
@@ -80,7 +76,7 @@ const Officials = () => {
 
         {officials.map((officer, index) => (
           <div
-            key={index}
+            key={officer._id} // ✅ FIXED
             ref={(el) => (cardsRef.current[index] = el)}
             className={`
               flex flex-col md:flex-row items-center gap-10
@@ -92,14 +88,15 @@ const Officials = () => {
           >
 
             {/* IMAGE */}
-            <div>
-              <img
-                src={officer.image}
-                alt={officer.name}
-                className="w-56 h-72 object-cover rounded-2xl border border-sky-400/50
-                shadow-[0_0_35px_rgba(56,189,248,0.6),inset_0_0_20px_rgba(56,189,248,0.2)]"
-              />
-            </div>
+            <img
+              src={`https://codersclub-i9xo.onrender.com/${officer.image}`}
+              alt={officer.name}
+              onError={(e) => {
+                e.target.src = "https://via.placeholder.com/200";
+              }}
+              className="w-56 h-72 object-cover rounded-2xl border border-sky-400/50
+              shadow-[0_0_35px_rgba(56,189,248,0.6),inset_0_0_20px_rgba(56,189,248,0.2)]"
+            />
 
             {/* CONTENT */}
             <div className="max-w-xl p-8 rounded-2xl bg-[#020617]/70 border border-sky-400/30 backdrop-blur-xl
@@ -111,28 +108,22 @@ const Officials = () => {
 
               <p className="mb-2">
                 <span className="text-sky-400 font-semibold">Profession:</span>{" "}
-                {officer.profession}
+                {officer.prof}
               </p>
-
-              {officer.pursuing && (
-                <p className="mb-2">
-                  <span className="text-sky-400 font-semibold">Pursuing:</span>{" "}
-                  {officer.pursuing}
-                </p>
-              )}
 
               <p className="mb-2">
                 <span className="text-sky-400 font-semibold">Department:</span>{" "}
-                {officer.department}
+                {officer.dept}
               </p>
 
               <p className="mt-4 italic text-indigo-300">
                 <span className="text-sky-400 font-semibold">Role:</span>{" "}
-                {officer.role}
+                {officer.role?.join(", ")}
               </p>
             </div>
           </div>
         ))}
+
       </div>
     </div>
   );
