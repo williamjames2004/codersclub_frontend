@@ -1,0 +1,102 @@
+/* AdminLogin.css */
+
+body {
+  margin: 0;
+  background: radial-gradient(circle at top, #0b1c3d, #020617);
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+.login {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Card */
+.login form {
+  width: 420px;
+  padding: 40px;
+  background: rgba(15, 23, 42, 0.75);
+  border-radius: 18px;
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 30px 60px rgba(2, 6, 23, 0.8);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* Heading */
+.login h2 {
+  font-size: 2rem;
+  letter-spacing: 1px;
+  color: #e0e7ff;
+  text-shadow: 0 0 15px rgba(56, 189, 248, 0.35);
+}
+
+/* Inputs */
+.login input {
+  background: rgba(2, 6, 23, 0.6);
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  border-radius: 12px;
+  padding: 14px 16px;
+  font-size: 1rem;
+  color: #e5e7eb;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.login input::placeholder {
+  color: #94a3b8;
+}
+
+.login input:focus {
+  border-color: #38bdf8;
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.25);
+}
+
+/* Button */
+.login button {
+  margin-top: 10px;
+  padding: 14px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: #020617;
+  background: linear-gradient(90deg, #38bdf8, #60a5fa);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.login button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 30px rgba(56, 189, 248, 0.45);
+}
+
+.login button:active {
+  transform: translateY(0);
+}
+.forgetpassword{
+  font-size: 12px;
+  color: #38bdf8;
+}
+.forgetpassword:hover{
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .login form {
+    width: 90%;
+    padding: 30px;
+  }
+
+  .login h2 {
+    top: 50px;
+    font-size: 1.6rem;
+  }
+}

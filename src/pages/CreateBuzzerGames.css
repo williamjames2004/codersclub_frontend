@@ -1,0 +1,56 @@
+.buzzer-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+}
+
+.buzzer-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  padding: 40px;
+  border-radius: 20px;
+  width: 400px;
+  color: white;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.buzzer-card h2 {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.buzzer-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.buzzer-card input {
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+}
+
+.buzzer-card button {
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  background: #00c6ff;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.buzzer-card button:hover {
+  background: #0072ff;
+}
+
+.message {
+  margin-top: 15px;
+  text-align: center;
+  font-weight: bold;
+}

@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+@keyframes scrollUp {
+  0% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+.scroll-cards {
+  animation: scrollUp 18s linear infinite;
+}

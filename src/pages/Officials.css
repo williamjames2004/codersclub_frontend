@@ -1,0 +1,169 @@
+.officials-container {
+  min-height: 100vh;
+  width: 80vw;
+  padding: 140px 8% 80px;
+  background: radial-gradient(circle at top, #0b1d3a, #020617);
+  color: #e5e7eb;
+  font-family: "Segoe UI", Roboto, sans-serif;
+}
+
+/* ===== HEADER ===== */
+.officials-header {
+  text-align: center;
+  margin-bottom: 90px;
+}
+
+.officials-header h2 {
+  font-size: 2.2rem;
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+
+.highlight-officials {
+    font-size: 3.2rem;  
+  color: #38bdf8;
+  text-shadow: 0 0 30px rgba(56, 189, 248, 0.7);
+}
+
+.officials-header .club-name {
+  color: #ffaa00;
+  font-weight: 600;
+  font-size: 2.6rem;
+}
+
+/* ===== LIST ===== */
+.officials-list {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  width: 1200px;
+  margin: 0 auto;
+}
+
+/* ===== CARD ===== */
+.official-card {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+}
+
+/* ALTERNATING LAYOUT */
+.left-image {
+  flex-direction: row;
+}
+
+.right-image {
+  flex-direction: row-reverse;
+}
+
+/* ===== IMAGE ===== */
+.official-image img {
+  width: 240px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 20px;
+  border: 2px solid #38bdf8;
+  box-shadow:
+    0 0 35px rgba(56, 189, 248, 0.6),
+    inset 0 0 20px rgba(56, 189, 248, 0.2);
+}
+
+/* ===== CONTENT CARD ===== */
+.official-content {
+  max-width: 600px;
+  padding: 32px 36px;
+  border-radius: 20px;
+  background: rgba(2, 6, 23, 0.75);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  backdrop-filter: blur(12px);
+  box-shadow:
+    0 0 40px rgba(56, 189, 248, 0.18),
+    inset 0 0 25px rgba(56, 189, 248, 0.06);
+}
+
+/* NAME */
+.official-content h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #e0f2fe;
+  margin-bottom: 16px;
+}
+
+/* DETAILS */
+.official-content p {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin-bottom: 8px;
+  color: #e5e7eb;
+}
+
+.official-content span {
+  color: #38bdf8;
+  font-weight: 600;
+}
+
+/* ROLE */
+.role {
+  margin-top: 14px;
+  color: #c7d2fe;
+  font-style: italic;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+  .official-card {
+    flex-direction: column !important;
+    text-align: center;
+    gap: 30px;
+  }
+
+  .official-content {
+    padding: 28px;
+  }
+
+  .officials-header h1 {
+    font-size: 2.6rem;
+  }
+}
+/* ===== SCROLL ANIMATION ===== */
+.official-card.hidden {
+  opacity: 0;
+  transform: translateY(60px) scale(0.95);
+  transition:
+    opacity 0.9s ease,
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* LEFT SLIDE */
+.official-card.left-image.hidden {
+  transform: translateX(-80px) scale(0.95);
+}
+
+/* RIGHT SLIDE */
+.official-card.right-image.hidden {
+  transform: translateX(80px) scale(0.95);
+}
+
+/* WHEN VISIBLE */
+.official-card.show {
+  opacity: 1;
+  transform: translateX(0) translateY(0) scale(1);
+}
+
+/* GLOW ON APPEAR */
+.official-card.show .official-image img,
+.official-card.show .official-content {
+  animation: glowPulse 1.6s ease;
+}
+
+@keyframes glowPulse {
+  0% {
+    box-shadow: 0 0 0 rgba(56,189,248,0);
+  }
+  60% {
+    box-shadow: 0 0 45px rgba(56,189,248,0.45);
+  }
+  100% {
+    box-shadow: 0 0 35px rgba(56,189,248,0.3);
+  }
+}

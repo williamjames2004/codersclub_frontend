@@ -1,0 +1,162 @@
+/* ===== GLOBAL ===== */
+body {
+  background: radial-gradient(circle at top, #0b1d3a, #020617);
+  font-family: "Segoe UI", Roboto, sans-serif;
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 14px 40px;
+  display: flex;
+  align-items: center;
+  background: rgba(2, 6, 23, 0.65);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(56, 189, 248, 0.25);
+  z-index: 1000;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo {
+  height: 40px;
+}
+
+.club-name {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #60a5fa;
+  letter-spacing: 1px;
+}
+
+/* TAGLINE */
+.hero-tagline {
+  margin-top: 18px;
+  font-size: 1.1rem;
+  color: #c7d2fe;
+}
+
+/* ===== ADVANCED AI LOADER ===== */
+.ai-loader {
+  width: 100vw;
+  height: 100vh;
+  background: radial-gradient(circle at center, #0b1d3a, #020617);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "Orbitron", sans-serif;
+  color: #60a5fa;
+  overflow: hidden;
+}
+
+.ai-core {
+  position: relative;
+  width: 120px;
+  height: 120px;
+}
+
+.core-center {
+  position: absolute;
+  inset: 35px;
+  background: radial-gradient(circle, #38bdf8, #1e3a8a);
+  border-radius: 50%;
+  box-shadow: 0 0 30px rgba(56,189,248,0.9);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.core-ring {
+  position: absolute;
+  inset: 0;
+  border: 2px solid rgba(56,189,248,0.6);
+  border-radius: 50%;
+  animation: rotate 3s linear infinite;
+}
+
+.core-ring.delay {
+  inset: 12px;
+  border-color: rgba(34,211,238,0.6);
+  animation-duration: 5s;
+}
+
+.boot-text {
+  margin-top: 28px;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+  animation: flicker 2.5s infinite;
+}
+
+.boot-sub {
+  margin-top: 6px;
+  font-size: 0.8rem;
+  color: #93c5fd;
+}
+
+/* Animations */
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(0.85); opacity: 0.7; }
+}
+
+/* ===== REVEAL EFFECT ===== */
+.reveal {
+  animation: reveal 1.4s ease forwards;
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* ===== PARTICLES ===== */
+.particles {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background-image:
+    radial-gradient(circle, rgba(56,189,248,0.3) 1px, transparent 1px);
+  background-size: 40px 40px;
+  animation: drift 60s linear infinite;
+  opacity: 0.25;
+  pointer-events: none;
+}
+
+@keyframes drift {
+  from { background-position: 0 0; }
+  to { background-position: 1000px 600px; }
+}
+
+/* ===== NEON GRID ===== */
+.landing::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background:
+    linear-gradient(rgba(56,189,248,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(56,189,248,0.06) 1px, transparent 1px);
+  background-size: 80px 80px;
+  animation: gridMove 40s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes gridMove {
+  from { background-position: 0 0; }
+  to { background-position: 800px 800px; }
+}
